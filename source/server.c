@@ -1192,6 +1192,15 @@ BUILT_IN_COMMAND(servercmd)
 	slen = strlen(server);
 
 	/*
+	 * /SERVER -TWITCH 						Connect to Twitch
+	 */
+	if (slen > 1 && !my_strnicmp(server, "-TWITCH", slen))
+	{
+		say("Connecting to Twitch! Calm down, I'm just a dummy message.");
+		return;
+	}
+
+	/*
 	 * /SERVER -DELETE <refnum>             Delete a server from list
 	 */
 	if (slen > 1 && !my_strnicmp(server, "-DELETE", slen))
