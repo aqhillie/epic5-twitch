@@ -53,7 +53,7 @@ const char internal_version[] = "20181228";
  * Note: This was too high by 7 even after all my commits
  * to the Twitch version fork, which is odd.
  */
-const unsigned long	commit_id = 1893;
+const unsigned long	commit_id = 1894;
 
 /*
  * As a way to poke fun at the current rage of naming releases after
