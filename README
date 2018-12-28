@@ -1,3 +1,27 @@
+This is a fork (kind of) of the ircII epic5 IRC client, my all time favorite
+IRC client. In noticing that epic's way of connecting to a server with the
+/server command is incompatible with Twitch due to it's requirement to use
+a password with the word oauth followed by a colon, followed by the oauth
+token, it is not possible to connect to Twitch using the server command.
+
+Seeing the differences between Twitch and regular IRC servers I decided
+to do this because as I said this is my favorite IRC client and the only
+one I wish to use, and it's so much easier to connect to Twitch chat
+using this.
+
+Changes I will make:
+
+1. Way to connect to Twitch with the /server command.
+2. New /set variables to hold information suitable for Twitch
+   connections such as oath token and username. (Nick function
+   is useless for Twitch because you can't change your nick
+   at all (except changing username in settings)).
+3. Decode badges in somewhat meaningful way. This will probably
+   be additional UI /set variables like Epic5 has already to
+   configure the look of the status bars.
+
+---------------------------------------------------------------------------------
+
 I guess the time has come to write one of these things.  Here is some basic
 information that will help you get started with using EPIC.
 
