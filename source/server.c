@@ -1030,7 +1030,7 @@ void 	display_server_list (void)
 		say("Primary server: %s %d", s->info->host, s->info->port);
 	else
 		say("Primary server: <None>");
-
+	say("Twitch server: %s %d", get_string_var(TWITCH_SERVER_VAR), get_string_var(TWITCH_SERVER_PORT_VAR));
 	say("Server list:");
 	for (i = 0; i < number_of_servers; i++)
 	{
@@ -1150,6 +1150,10 @@ const char *server_states[13] = {
  *
  * /SERVER
  *	Show the server list.
+ * /SERVER -TWITCH
+ *  Connect to Twitch.
+ *  Fails if TWITCH_USERNAME is empty.
+ *  Fails if TWITCH_AUTH is empty.
  * /SERVER -DELETE <refnum|desc>
  *	Remove server <refnum> (or <desc>) from server list.
  *	Fails if you do not give it a refnum or desc.
@@ -1196,6 +1200,21 @@ BUILT_IN_COMMAND(servercmd)
 	 */
 	if (slen > 1 && !my_strnicmp(server, "-TWITCH", slen))
 	{
+		char *t_username;
+		char *t_authtoken;
+
+		if (!(t_username = get_string_var(TWITCH_USERNAME_VAR)))
+		{
+			say("Can't connect to Twitch: Variable TWITCH_USERNAME is empty.");
+			return;
+		}
+
+		if (!(t_authtoken = get_string_var(TWITCH_AUTH_VAR)))
+		{
+			say("Can't connect to Twitch: Variable TWITCH_AUTH is empty.");
+			return;
+		}
+
 		say("Connecting to Twitch! Calm down, I'm just a dummy message.");
 		return;
 	}

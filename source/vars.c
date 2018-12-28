@@ -451,13 +451,9 @@ void 	init_variables_stage1 (void)
 	VAR(SWITCH_CHANNELS_BETWEEN_WINDOWS, BOOL, NULL);
 	VAR(TERM_DOES_BRIGHT_BLINK, BOOL, NULL);
 	VAR(TMUX_OPTIONS, STR,  NULL);
-#define DEFAULT_TWITCH_AUTH NULL
 	VAR(TWITCH_AUTH, STR, NULL);
-#define DEFAULT_TWITCH_SERVER "irc.chat.twitch.tv"
 	VAR(TWITCH_SERVER, STR, NULL);
-#define DEFAULT_TWITCH_SERVER_PORT 6667
 	VAR(TWITCH_SERVER_PORT, INT, NULL);
-#define DEFAULT_TWITCH_USERNAME NULL
 	VAR(TWITCH_USERNAME, STR, NULL);
 	VAR(USER_INFORMATION, STR, NULL);
 	VAR(WORD_BREAK, STR,  NULL);
@@ -633,8 +629,16 @@ int 	set_variable (const char *name, IrcVariable *var, const char *orig_value, i
 	    {
 		if (!value)
 		{
-			new_free(&(var->data->string));
-			changed = 1;
+			// Not a fan of this way but for now since there's only 1...
+			if (!strcmp(name, "TWITCH_SERVER"))
+			{
+				say("Value of TWITCH_SERVER cannot be empty!");
+				retval = -1;
+			} else
+			{
+				new_free(&(var->data->string));
+				changed = 1;				
+			}
 		}
 		else if (*value)
 		{
