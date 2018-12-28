@@ -39,8 +39,8 @@
 /*
  * irc_version is what $J returns, its the common-name for the version.
  */
-const char irc_version[] = "EPIC5twitch-0.1.0";
-const char useful_info[] = "epic5twitch 0 1 0";
+const char irc_version[] = "EPIC5twitch-2.1.0";
+const char useful_info[] = "epic5 2 1 0";
 
 /*
  * internal_version is what $V returns, its the integer-id for the
@@ -53,7 +53,7 @@ const char internal_version[] = "20181228";
  * Note: This was too high by 7 even after all my commits
  * to the Twitch version fork, which is odd.
  */
-const unsigned long	commit_id = 1892;
+const unsigned long	commit_id = 1893;
 
 /*
  * As a way to poke fun at the current rage of naming releases after
